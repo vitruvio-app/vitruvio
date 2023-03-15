@@ -6,5 +6,9 @@
   "repository": "https://github.com/vitruvio-app/vitruvio.git",
   "author": "Alex Fiorenza <alexfiorenza2012@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
 }
