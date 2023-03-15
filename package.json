@@ -1,0 +1,10 @@
+{
+  "name": "vitruvio",
+  "version": "0.0.1",
+  "description": "Vitruvio monorepo",
+  "main": "index.js",
+  "repository": "https://github.com/vitruvio-app/vitruvio.git",
+  "author": "Alex Fiorenza <alexfiorenza2012@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
