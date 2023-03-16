@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "description": "Vitruvio monorepo",
   "main": "index.js",
+  "scripts": {
+    "graph": "yarn nx graph",
+    "prepare": "husky install ",
+    "build:all": "yarn lerna run build",
+    "dev:vitruvio": "yarn lerna run dev --scope vitruvio"
+  },
   "repository": "https://github.com/vitruvio-app/vitruvio.git",
   "author": "Alex Fiorenza <alexfiorenza2012@gmail.com>",
   "license": "MIT",
@@ -10,5 +16,20 @@
   "workspaces": [
     "packages/*",
     "apps/*"
-  ]
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3"
+  },
+  "dependencies": {
+    "lerna": "^6.5.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
