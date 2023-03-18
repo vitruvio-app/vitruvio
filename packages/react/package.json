@@ -1,0 +1,36 @@
+{
+  "name": "@vitruvio/react",
+  "version": "0.0.1",
+  "description": "Set of HighOrderComponents,Contexts,Hooks regarding usage of Vitruvio",
+  "main": "./dist/index.js",
+  "module": "./index/index.js",
+  "types": "./index/index.d.ts",
+  "type": "module",
+  "repository": "https://github.com/vitruvio-app/vitruvio.git",
+  "author": "Alex Fiorenza",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.tsx",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
+  },
+  "private": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@vitruvio/types": "*",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.6.3",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "@lit-protocol/lit-node-client": "^2.1.90"
+  }
+}

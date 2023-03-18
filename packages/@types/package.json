@@ -1,0 +1,10 @@
+{
+  "name": "@vitruvio/types",
+  "version": "0.0.1",
+  "description": "Types declarations for Vitruvio",
+  "main": "index.js",
+  "repository": "https://github.com/vitruvio-app/vitruvio.git",
+  "author": "Alex Fiorenza",
+  "license": "MIT",
+  "private": false
+}

@@ -7,7 +7,8 @@
     "graph": "yarn nx graph",
     "prepare": "husky install ",
     "build:all": "yarn lerna run build",
-    "dev:vitruvio": "yarn lerna run dev --scope vitruvio"
+    "dev:vitruvio": "yarn lerna run dev --scope vitruvio",
+    "setup": "yarn && lerna bootstrap"
   },
   "repository": "https://github.com/vitruvio-app/vitruvio.git",
   "author": "Alex Fiorenza <alexfiorenza2012@gmail.com>",
