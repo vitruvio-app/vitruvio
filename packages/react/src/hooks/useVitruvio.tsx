@@ -4,12 +4,12 @@ import LitSdk from '@lit-protocol/lit-node-client'
 export default function useVitruvio() {
   const { litProtocolInstance } = useContext(APPContext)
 
-  const encrypt = async (authSig: {
-    sig: `0x${string}`
-    derivedVia: string
-    signedMessage: string
-    address: string
-  }) => {
+  /**
+   * It encrypts a string and saves the encryption key to the blockchain.
+   * @param authSig - The signature of the user who is encrypting the data.
+   * @returns The encrypted string and the encrypted symmetric key.
+   */
+  const encrypt = async (authSig: { sig: string; derivedVia: string; signedMessage: string; address: string }) => {
     const accessControlConditions = [
       {
         contractAddress: '',
@@ -35,5 +35,6 @@ export default function useVitruvio() {
       encryptedSymmetricKey: LitSdk.uint8arrayToString(encryptedSymmetricKey),
     }
   }
+
   return { encrypt }
 }

@@ -23,7 +23,8 @@ const Page: NextPage = () => {
           disabled={isSigning}
           onClick={async () => {
             const authSig = await signAuthMessage();
-            await encrypt(authSig);
+            const res = await encrypt(authSig);
+            console.log(res);
           }}
         >
           Sign Message

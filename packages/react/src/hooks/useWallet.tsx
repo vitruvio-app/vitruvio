@@ -1,23 +1,22 @@
-import { useAccount, useSignMessage } from 'wagmi'
+import { useAccount, useSigner, useSignMessage } from 'wagmi'
 import { ethers } from 'ethers'
 import { useState } from 'react'
 import siwe from 'siwe'
 //Requires a wallet connect instance
 export default function useWallet() {
-  const [statement, setStatement] = useState('Vitruvio auth message')
+  const statement = 'Vitruvio auth message'
+  const [isSigning, setIsSigning] = useState(false)
   const { isConnected, address } = useAccount()
-  const {
-    isError,
-    isLoading: isSigning,
-    signMessageAsync,
-  } = useSignMessage({
-    message: statement,
-  })
+  const { data: signer } = useSigner()
+
+  /**
+   * It signs a message using the wallet connected to the app. PROTOCOL EIP 4361
+   * @returns An object with the signature, the method used to sign, the message that was signed, and
+   * the address that signed it.
+   */
   const signAuthMessage = async () => {
     if (!isConnected) throw new Error('No wallet connected')
-    const signature = await signMessageAsync()
-    const recoveredAddress = ethers.utils.verifyMessage(statement, signature)
-    if (isError) throw new Error('Error signing message')
+    if (!signer) throw new Error('No signer')
     const siweMessage = new siwe.SiweMessage({
       domain: 'localhost',
       address,
@@ -27,6 +26,10 @@ export default function useWallet() {
       chainId: 5,
     })
     const messageToSign = siweMessage.prepareMessage()
+    setIsSigning(true)
+    const signature = await signer.signMessage(messageToSign)
+    setIsSigning(false)
+    const recoveredAddress = ethers.utils.verifyMessage(messageToSign, signature)
     const authSig = {
       sig: signature,
       derivedVia: 'web3.eth.personal.sign',
@@ -35,7 +38,6 @@ export default function useWallet() {
     }
     return authSig
   }
-
   return {
     signAuthMessage,
     isSigning,
