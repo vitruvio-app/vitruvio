@@ -36,6 +36,7 @@
   "dependencies": {
     "@lit-protocol/lit-node-client": "^2.1.90",
     "@lit-protocol/sdk-browser": "^1.1.249",
+    "@lit-protocol/types": "^2.1.94",
     "siwe": "^1.1.6"
   },
   "peerDependencies": {

@@ -1089,6 +1089,11 @@
   resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-2.1.90.tgz#bc390af945134c83c8a7ea3a249304e6a215977c"
   integrity sha512-VzGAxFwizNRdVePDnf+8LHSPIexPhzvISX3ePZT/JSCdtrcEPQKWD4ifVu4g7dDfA3mKWqNEgObdPcNbBILX4g==
 
+"@lit-protocol/types@^2.1.94":
+  version "2.1.94"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-2.1.94.tgz#986f7e167e7dbacc4c2406de516fddb15bc00894"
+  integrity sha512-/o6JZ8WPT5qKKBWB4mBovVA8/4duW6tSjeim8PER2PA/IeS0EYwksmiQ0e6H6mR9dCbHZyxBrgklMyHaCgQUBQ==
+
 "@lit-protocol/uint8arrays@2.1.90":
   version "2.1.90"
   resolved "https://registry.yarnpkg.com/@lit-protocol/uint8arrays/-/uint8arrays-2.1.90.tgz#ed3d62c0f444ca5fe56a9cb26ede115df01453b8"
