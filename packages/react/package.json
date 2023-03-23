@@ -24,6 +24,7 @@
     "README.md"
   ],
   "devDependencies": {
+    "@lit-protocol/types": "^2.1.94",
     "@types/react": "^18.0.28",
     "@vitruvio/types": "*",
     "eslint-config-prettier": "^8.7.0",
@@ -34,9 +35,7 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
-    "@lit-protocol/lit-node-client": "^2.1.90",
-    "@lit-protocol/sdk-browser": "^1.1.249",
-    "@lit-protocol/types": "^2.1.94",
+    "@lit-protocol/lit-node-client": "2.1.55",
     "siwe": "^1.1.6"
   },
   "peerDependencies": {

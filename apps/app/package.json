@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@lit-protocol/types": "^2.1.94",
-    "@types/node": "18.15.3",
     "@types/react": "latest",
     "@vitruvio/react": "*",
     "@vitruvio/ui": "*",

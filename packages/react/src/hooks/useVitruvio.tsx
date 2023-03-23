@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { APPContext } from '../contexts/app/context'
-import LitSdk from '@lit-protocol/lit-node-client'
+import * as LitSdk from '@lit-protocol/lit-node-client'
 import { AccessControlConditions } from '@lit-protocol/types'
 import useWallet from './useWallet'
 export default function useVitruvio() {
