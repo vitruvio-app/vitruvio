@@ -4,6 +4,7 @@
   "description": "Vitruvio monorepo",
   "main": "index.js",
   "scripts": {
+    "docs": "yarn lerna run start --scope @vitruvio/docs",
     "create:tslib": "sh scaffolds/ts-lib.sh -t",
     "graph": "yarn nx graph",
     "prepare": "husky install ",
@@ -17,7 +18,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "docs/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
