@@ -4,7 +4,6 @@
   "description": "Vitruvio monorepo",
   "main": "index.js",
   "scripts": {
-    "docs": "yarn lerna run start --scope @vitruvio/docs",
     "create:tslib": "sh scaffolds/ts-lib.sh -t",
     "docs": "yarn lerna run start --scope @vitruvio/docs",
     "graph": "yarn nx graph",

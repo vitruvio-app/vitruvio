@@ -15,7 +15,9 @@
   "scripts": {
     "build": "tsup src/index.tsx",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
-    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\""
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "private": false,
   "files": [
@@ -24,18 +26,32 @@
     "README.md"
   ],
   "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.15",
+    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.28",
     "@vitruvio/types": "*",
+    "babel-loader": "^8.3.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook-css-modules": "^1.0.8",
     "tsup": "^6.6.3",
-    "typescript": "^5.0.2"
+    "typescript": "^4.9.4"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.14"
+  },
+  "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.3"
   }
 }

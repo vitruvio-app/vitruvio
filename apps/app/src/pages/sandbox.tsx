@@ -17,7 +17,7 @@ const Page: NextPage = () => {
 
   return (
     <>
-      <Label />
+      <Label text='Sample lit protocol' />
       {hasLoaded ? <Web3Button /> : null}
       {isConnected && hasLoaded ? (
         <>
