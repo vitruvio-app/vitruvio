@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "create:tslib": "sh scaffolds/ts-lib.sh -t",
+    "docs": "yarn lerna run start --scope @vitruvio/docs",
     "graph": "yarn nx graph",
     "prepare": "husky install ",
     "build:all": "yarn lerna run build",
@@ -17,7 +18,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "docs/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",

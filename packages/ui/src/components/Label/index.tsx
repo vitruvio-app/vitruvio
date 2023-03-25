@@ -1,9 +1,8 @@
 import React from 'react'
+import { Typography } from '@mui/material'
 
-interface Props {}
-
-const Component = (props: Props): JSX.Element => {
-  return <label>Label test</label>
+const Component = (): JSX.Element => {
+  return <Typography variant='h1'>Label test</Typography>
 }
 
 export default Component
