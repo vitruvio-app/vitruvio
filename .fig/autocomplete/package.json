@@ -1,6 +1,7 @@
 {
-  "name": "boilerplate-fig-autocomplete",
+  "name": "@vitruvio/fig",
   "version": "1.0.0",
+  "private": "true",
   "description": "Boilerplate Fig autocomplete spec package",
   "scripts": {
     "dev": "npx @withfig/autocomplete-tools dev",
