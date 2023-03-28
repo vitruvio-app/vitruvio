@@ -19,7 +19,8 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "docs/*"
+    "docs/*",
+    ".fig/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
