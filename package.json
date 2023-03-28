@@ -10,7 +10,8 @@
     "prepare": "husky install ",
     "build:all": "yarn lerna run build",
     "dev:app": "yarn lerna run dev --scope @vitruvio/app",
-    "setup": "yarn && lerna bootstrap"
+    "setup": "yarn && lerna bootstrap",
+    "dev:fig": "yarn lerna run dev --scope @vitruvio/fig"
   },
   "repository": "https://github.com/vitruvio-app/vitruvio.git",
   "author": "Alex Fiorenza <alexfiorenza2012@gmail.com>",

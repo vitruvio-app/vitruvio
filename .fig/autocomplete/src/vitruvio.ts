@@ -6,6 +6,17 @@ const completionSpec: Fig.Spec = {
       name: "run",
       description: "Will run the vitruvio app",
     },
+    {
+      name: "scaffold",
+      description: "Will scaffold a new project in the packages directory",
+      subcommands: [
+        {
+          name: "ts",
+          description:
+            "Will scaffold a new typescript project in the packages directory",
+        },
+      ],
+    },
   ],
   options: [
     {
