@@ -11,4 +11,6 @@ declare namespace Vitruvio {
     mumbai = 'mumbai',
     fuji = 'fuji',
   }
+  type Chain = Chains.avalanche | Chains.ethereum | Chains.polygon;
+  type Testnet = Testnets.goerli | Testnets.mumbai | Testnets.fuji;
 }

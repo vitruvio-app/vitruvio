@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { Label } from '@vitruvio/ui';
 import { useVitruvio } from '@vitruvio/react';
-import { Web3Button } from '@web3modal/react';
 import { useAccount } from 'wagmi';
+import { useUI } from '@vitruvio/ui';
 
 const Page: NextPage = () => {
   const { isConnected } = useAccount();
@@ -11,6 +11,8 @@ const Page: NextPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [encryptedString, setEncryptedString] = useState<Blob>();
   const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>();
+  const { Connect } = useUI();
+
   useEffect(() => {
     setHasLoaded(true);
   }, []);
@@ -18,7 +20,7 @@ const Page: NextPage = () => {
   return (
     <>
       <Label text='Sample lit protocol' />
-      {hasLoaded ? <Web3Button /> : null}
+      <Connect />
       {isConnected && hasLoaded ? (
         <>
           <button

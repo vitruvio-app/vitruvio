@@ -1,4 +1,4 @@
-import { useAccount, useSigner, useSignMessage } from 'wagmi'
+import { useAccount, useSigner } from 'wagmi'
 import { ethers } from 'ethers'
 import { useState } from 'react'
 import siwe from 'siwe'
@@ -38,6 +38,7 @@ export default function useWallet() {
     }
     return authSig
   }
+
   return {
     signAuthMessage,
     isSigning,

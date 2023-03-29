@@ -49,7 +49,10 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@mui/material": "^5.11.14"
+    "@mui/material": "^5.11.14",
+    "ethers": "^5",
+    "wagmi": "^0.12.2",
+    "@web3modal/react": "^2.0.0"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3"
