@@ -33,8 +33,10 @@
     "@storybook/addon-links": "^6.5.15",
     "@storybook/builder-webpack4": "^6.5.15",
     "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
+    "@svgr/webpack": "^7.0.0",
     "@types/react": "^18.0.28",
     "@vitruvio/types": "*",
     "babel-loader": "^8.3.0",
@@ -50,11 +52,13 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.14",
+    "@web3modal/react": "^2.0.0",
     "ethers": "^5",
-    "wagmi": "^0.12.2",
-    "@web3modal/react": "^2.0.0"
+    "wagmi": "^0.12.2"
   },
   "dependencies": {
-    "@lottiefiles/react-lottie-player": "^3.5.3"
+    "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@vitruvio/utils": "*",
+    "lodash": "^4.17.21"
   }
 }

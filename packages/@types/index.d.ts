@@ -7,10 +7,10 @@ declare namespace Vitruvio {
     avalanche = 'avalanche',
   }
   const enum Testnets {
-    goerli = 'goerli',
+    sepolia = 'sepolia',
     mumbai = 'mumbai',
     fuji = 'fuji',
   }
-  type Chain = Chains.avalanche | Chains.ethereum | Chains.polygon;
-  type Testnet = Testnets.goerli | Testnets.mumbai | Testnets.fuji;
+  type Chain = 'ethereum' | 'polygon' | 'avalanche';
+  type Testnet = 'sepolia' | 'mumbai' | 'fuji';
 }

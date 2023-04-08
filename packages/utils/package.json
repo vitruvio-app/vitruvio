@@ -1,0 +1,29 @@
+{
+  "name": "@vitruvio/utils",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "dist/*"
+  ],
+  "type": "module",
+  "author": "Alex Fiorenza <alexfiorenza2012@gmail.com> (https://github.com/alexFiorenza)",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup --format cjs,esm --dts --external wagmi,ethers",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@vitruvio/types": "*",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.3"
+  },
+  "peerDependencies": {
+    "wagmi": "^0.12.8",
+    "ethers": "^6.2.3"
+  }
+}
