@@ -29,7 +29,7 @@ export default function useUI() {
     }
     return (
       <Button
-        icon={!isOpen ? <WalletConnectIcon /> : undefined}
+        icon={!isOpen ? <WalletConnectIcon color='#3396FF' /> : undefined}
         loading={isOpen}
         loadingText={'Connecting...'}
         onClick={() => {

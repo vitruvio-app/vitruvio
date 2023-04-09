@@ -16,9 +16,9 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  text: 'Sample button',
+  text: 'Connect Wallet',
   loading: true,
-  icon: <WalletConnectIcon width='2rem' height='2rem' />,
+  icon: <WalletConnectIcon width='2rem' height='2rem' color='#3396ff' />,
   disabled: false,
   variant: 'outlined',
 }

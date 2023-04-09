@@ -1,12 +1,14 @@
 import React from 'react'
 import { Chain } from '@vitruvio/types'
-import { Box, ListItemIcon, ListItemText, MenuItem, Select, SvgIcon } from '@mui/material'
+import { Box, ListItemIcon, ListItemText, MenuItem, Select } from '@mui/material'
 import _ from 'lodash'
 import EthereumIcon from '../../../assets/ethereum'
 import PolygonIcon from '../../../assets/polygon'
 import AvalancheIcon from '../../../assets/avalanche'
+import FantomIcon from '../../../assets/fantom'
+import BinanceChainIcon from '../../../assets/bsc'
 export interface Props {
-  onSelect: (chain: Chain) => void
+  onSelect?: (chain: Chain) => void
 }
 const getChainIcon = (chain: Chain): JSX.Element => {
   switch (chain) {
@@ -16,13 +18,17 @@ const getChainIcon = (chain: Chain): JSX.Element => {
       return <AvalancheIcon width='1.5rem' height='1.5rem' color='red' />
     case 'polygon':
       return <PolygonIcon width='1.5rem' height='1.5rem' color='purple' />
+    case 'fantom':
+      return <FantomIcon width='1.5rem' height='1.5rem' color='#1D66F1' />
+    case 'bsc':
+      return <BinanceChainIcon width='1.5rem' height='1.5rem' color='#f3ba2f' />
     default:
       return <EthereumIcon width='1.5rem' height='1.5rem' color='gray' />
   }
 }
 
 const SelectChains = (): JSX.Element => {
-  const CHAINS: Chain[] = ['ethereum', 'avalanche', 'polygon']
+  const CHAINS: Chain[] = ['ethereum', 'avalanche', 'polygon', 'fantom', 'bsc']
   return (
     <Select
       value={CHAINS[0]}
@@ -30,7 +36,7 @@ const SelectChains = (): JSX.Element => {
         return (
           <Box sx={{ display: 'flex', gap: 1 }}>
             {getChainIcon(value as Chain)}
-            {_.capitalize(value)}
+            {value === 'bsc' ? 'Binance' : _.capitalize(value)}
           </Box>
         )
       }}
@@ -38,7 +44,7 @@ const SelectChains = (): JSX.Element => {
       {CHAINS.map((chain) => (
         <MenuItem key={chain} value={chain}>
           <ListItemIcon>{getChainIcon(chain)}</ListItemIcon>
-          <ListItemText primary={_.capitalize(chain)} />
+          <ListItemText primary={chain === 'bsc' ? 'Binance' : _.capitalize(chain)} />
         </MenuItem>
       ))}
     </Select>

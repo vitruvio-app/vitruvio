@@ -5,12 +5,16 @@ declare namespace Vitruvio {
     ethereum = 'ethereum',
     polygon = 'polygon',
     avalanche = 'avalanche',
+    fantom = 'fantom',
+    bsc = 'bsc',
   }
   const enum Testnets {
     sepolia = 'sepolia',
     mumbai = 'mumbai',
     fuji = 'fuji',
+    bscTestnet = 'bscTestnet',
+    fantomTestnet = 'fantomTestnet',
   }
-  type Chain = 'ethereum' | 'polygon' | 'avalanche';
-  type Testnet = 'sepolia' | 'mumbai' | 'fuji';
+  type Chain = 'ethereum' | 'polygon' | 'avalanche' | 'fantom' | 'bsc';
+  type Testnet = 'sepolia' | 'mumbai' | 'fuji' | 'bscTestnet' | 'fantomTestnet';
 }
