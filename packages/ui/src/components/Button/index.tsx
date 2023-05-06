@@ -13,7 +13,17 @@ export interface Props {
   onClick?: () => void
 }
 
-const ButtonComponent = ({ icon, text, loading, variant, color, disabled, onClick }: Props): JSX.Element => {
+const ButtonComponent = ({
+  icon,
+  text,
+  loading,
+  variant,
+  color,
+  disabled,
+  loadingIcon,
+  loadingText,
+  onClick,
+}: Props): JSX.Element => {
   return (
     <Button
       color={color}
@@ -22,9 +32,9 @@ const ButtonComponent = ({ icon, text, loading, variant, color, disabled, onClic
         onClick && onClick()
       }}
       variant={variant}
-      startIcon={icon}
+      startIcon={!loading ? icon : loadingIcon}
     >
-      {loading ? 'Is loading' : text}
+      {loading ? loadingText || 'Is loading' : text}
     </Button>
   )
 }

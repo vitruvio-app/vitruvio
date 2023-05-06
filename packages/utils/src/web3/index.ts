@@ -6,6 +6,10 @@ import {
   avalancheFuji,
   polygon,
   avalanche,
+  fantomTestnet,
+  fantom,
+  bscTestnet,
+  bsc,
 } from 'wagmi/chains';
 const getWagmiInstanceByChain = (chain: Chain | Testnet) => {
   switch (chain) {
@@ -21,9 +25,34 @@ const getWagmiInstanceByChain = (chain: Chain | Testnet) => {
       return polygon;
     case 'avalanche':
       return avalanche;
+    case 'fantomTestnet':
+      return fantomTestnet;
+    case 'fantom':
+      return fantom;
+    case 'bscTestnet':
+      return bscTestnet;
+    case 'bsc':
+      return bsc;
     default:
       return mainnet;
   }
 };
 
-export { getWagmiInstanceByChain };
+const getTestnetFromMainnet = (chain: Chain): Testnet => {
+  switch (chain) {
+    case 'ethereum':
+      return 'sepolia';
+    case 'polygon':
+      return 'mumbai';
+    case 'avalanche':
+      return 'fuji';
+    case 'bsc':
+      return 'bscTestnet';
+    case 'fantom':
+      return 'fantomTestnet';
+    default:
+      return 'sepolia';
+  }
+};
+
+export { getWagmiInstanceByChain, getTestnetFromMainnet };

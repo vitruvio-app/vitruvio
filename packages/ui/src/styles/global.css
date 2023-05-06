@@ -6,12 +6,4 @@ body {
   margin: 0;
   font-family: "Nunito", sans-serif;
 }
-.fusion{
-  background-color: white;
-  stroke: black;
-  stroke-width: 2px;
-  stroke-miterlimit: 5;
-  width: 64px;
-  height: 64px;
-  fill: none;
-  }
+

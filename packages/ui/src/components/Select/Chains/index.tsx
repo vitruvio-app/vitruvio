@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Chain } from '@vitruvio/types'
 import { Box, ListItemIcon, ListItemText, MenuItem, Select } from '@mui/material'
 import _ from 'lodash'
@@ -10,6 +10,7 @@ import BinanceChainIcon from '../../../assets/bsc'
 export interface Props {
   onSelect?: (chain: Chain) => void
 }
+
 const getChainIcon = (chain: Chain): JSX.Element => {
   switch (chain) {
     case 'ethereum':
@@ -27,11 +28,16 @@ const getChainIcon = (chain: Chain): JSX.Element => {
   }
 }
 
-const SelectChains = (): JSX.Element => {
+const SelectChains = (props: Props): JSX.Element => {
   const CHAINS: Chain[] = ['ethereum', 'avalanche', 'polygon', 'fantom', 'bsc']
+  const [selectedChain, setSelectedChain] = useState<Chain>('ethereum')
   return (
     <Select
-      value={CHAINS[0]}
+      value={selectedChain}
+      onChange={(e) => {
+        setSelectedChain(e.target.value as Chain)
+        props.onSelect && props.onSelect(e.target.value as Chain)
+      }}
       renderValue={(value) => {
         return (
           <Box sx={{ display: 'flex', gap: 1 }}>
