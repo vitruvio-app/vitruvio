@@ -14,4 +14,8 @@ const Template: ComponentStory<typeof WalletConnectStatus> = (args) => <WalletCo
 
 export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {}
+Primary.args = {
+  chain: 'ethereum',
+  isTestnet: true,
+  address: '0x1234567890123456789012345678901234567890',
+}

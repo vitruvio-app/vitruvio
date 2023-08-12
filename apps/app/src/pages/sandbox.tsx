@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { Chain } from '@vitruvio/types';
-import { useUI, SelectChains } from '@vitruvio/ui';
+import { useUI, SelectChains, WalletStatus } from '@vitruvio/ui';
 import { useVitruvio } from '@vitruvio/react';
 import { useAccount } from 'wagmi';
 import { Checkbox, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import { getTestnetFromMainnet } from '@vitruvio/utils';
 const Page: NextPage = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { encrypt, decrypt } = useVitruvio();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [isTestnet, setIsTestnet] = useState(false);
@@ -26,6 +26,7 @@ const Page: NextPage = () => {
     <>
       <Stack direction='row' justifyContent={'space-between'}>
         <Typography variant='h4'>Vitruvio Sandbox</Typography>
+        <WalletStatus chain={chain} isTestnet={isTestnet} address={'0x'} />
       </Stack>
 
       <Stack direction={'row'} alignItems={'center'}>

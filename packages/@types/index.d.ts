@@ -1,5 +1,5 @@
-export = Vitruvio;
-export as namespace Vitruvio;
+export = Vitruvio
+export as namespace Vitruvio
 declare namespace Vitruvio {
   const enum Chains {
     ethereum = 'ethereum',
@@ -15,6 +15,7 @@ declare namespace Vitruvio {
     bscTestnet = 'bscTestnet',
     fantomTestnet = 'fantomTestnet',
   }
-  type Chain = 'ethereum' | 'polygon' | 'avalanche' | 'fantom' | 'bsc';
-  type Testnet = 'sepolia' | 'mumbai' | 'fuji' | 'bscTestnet' | 'fantomTestnet';
+  type IpfsProvider = 'infura'
+  type Chain = 'ethereum' | 'polygon' | 'avalanche' | 'fantom' | 'bsc'
+  type Testnet = 'sepolia' | 'mumbai' | 'fuji' | 'bscTestnet' | 'fantomTestnet'
 }

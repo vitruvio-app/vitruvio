@@ -55,4 +55,8 @@ const getTestnetFromMainnet = (chain: Chain): Testnet => {
   }
 };
 
-export { getWagmiInstanceByChain, getTestnetFromMainnet };
+const formatWalletAddress = (address: string) => {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+};
+
+export { getWagmiInstanceByChain, getTestnetFromMainnet, formatWalletAddress };

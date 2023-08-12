@@ -7,4 +7,16 @@ import FantomIcon from './assets/fantom'
 import PolygonIcon from './assets/polygon'
 import Spinner from './components/Loaders/spinner'
 import SelectChains from './components/Select/Chains'
-export { SelectChains, Button, useUI, AvalancheIcon, BinanceChainIcon, EthereumIcon, FantomIcon, PolygonIcon, Spinner }
+import WalletStatus from './components/Wallet/status'
+export {
+  SelectChains,
+  Button,
+  useUI,
+  AvalancheIcon,
+  BinanceChainIcon,
+  EthereumIcon,
+  FantomIcon,
+  PolygonIcon,
+  Spinner,
+  WalletStatus,
+}
