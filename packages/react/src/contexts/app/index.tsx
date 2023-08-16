@@ -12,6 +12,7 @@ interface VitruvioReactProps {
     apiEndpoint: string
   }
 }
+
 const VitruvioReact = (props: VitruvioReactProps): JSX.Element => {
   //lit protocol general instance
   const litProtocol = new LitSdk.LitNodeClient({
