@@ -1,6 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
-
 const config: HardhatUserConfig = {
   solidity: '0.8.19',
   networks: {
@@ -8,21 +7,6 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_SEPOLIA,
       accounts: [process.env.WALLET_PRIVATE_KEY as string],
       chainId: 11155111,
-    },
-    ethereum: {
-      url: process.env.RPC_ETHMAINNET,
-      accounts: [process.env.WALLET_PRIVATE_KEY as string],
-      chainId: 1,
-    },
-    mumbai: {
-      url: process.env.RPC_MUMBAI,
-      accounts: [process.env.WALLET_PRIVATE_KEY as string],
-      chainId: 80001,
-    },
-    polygon: {
-      url: process.env.RPC_POLYGON,
-      accounts: [process.env.WALLET_PRIVATE_KEY as string],
-      chainId: 137,
     },
   },
   etherscan: {

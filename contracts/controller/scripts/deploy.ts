@@ -3,15 +3,16 @@ import '@nomiclabs/hardhat-ethers'
 import signale from 'signale'
 
 async function main() {
-  const currentNetworkId = network.config.chainId
   const ControllerFactory = await ethers.getContractFactory('Controller')
   const controller = await ControllerFactory.deploy()
   const deployTransaction = await controller.deploymentTransaction()
-  deployTransaction?.wait(10)
   const ControllerAddress = await controller.getAddress()
   signale.success(
     `Treasure contract was deployed to:${ControllerAddress} 🚀🚀 `
   )
+  signale.pending('Waiting for transaction to be mined ...')
+  await deployTransaction?.wait(10)
+  signale.success('Transaction mined')
   signale.pending('Verifying contract on Scanner')
   await verify(ControllerAddress, [])
 }
@@ -19,7 +20,6 @@ async function verify(contractAddress: string, args: any[]) {
   try {
     await run('verify:verify', {
       address: contractAddress,
-      constructorArguments: args,
     })
   } catch (error: any) {
     console.log(error)
