@@ -27,7 +27,7 @@ contract Controller {
         string memory version,
         string memory archiveName,
         uint256 timestamp
-    ) public payable returns (File memory) {
+    ) public returns (File memory) {
         File memory newFile = File(
             encryptedsimmetricKey,
             accessControlConditions,

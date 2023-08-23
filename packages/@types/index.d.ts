@@ -1,6 +1,7 @@
 export = Vitruvio
 export as namespace Vitruvio
 declare namespace Vitruvio {
+  const IPFS_INFURA_URL = 'https://ipfs.infura.io:5001/api/v0'
   const enum Chains {
     ethereum = 'ethereum',
     polygon = 'polygon',

@@ -31,6 +31,7 @@ const VitruvioReact = (props: VitruvioReactProps): JSX.Element => {
       value={{
         litProtocolInstance: litProtocol,
         ipfsProvider: {
+          type: props.ipfsProvider.type,
           apiKey: props.ipfsProvider.apiKey,
           apiSecret: props.ipfsProvider.apiKeySecret,
           host: props.ipfsProvider.apiEndpoint,

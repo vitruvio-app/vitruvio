@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@lit-protocol/lit-node-client": "2.1.55",
+    "helia": "^2.0.1",
     "siwe": "^1.1.6"
   },
   "peerDependencies": {

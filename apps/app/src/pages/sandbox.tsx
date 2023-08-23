@@ -1,26 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { Chain } from '@vitruvio/types';
-import { useUI, SelectChains, WalletStatus } from '@vitruvio/ui';
-import { useVitruvio } from '@vitruvio/react';
-import { useAccount } from 'wagmi';
-import { Checkbox, Typography } from '@mui/material';
-import { Stack } from '@mui/system';
-import { getTestnetFromMainnet } from '@vitruvio/utils';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { Chain, Testnet } from '@vitruvio/types'
+import { useUI, SelectChains, WalletStatus } from '@vitruvio/ui'
+import { useVitruvio } from '@vitruvio/react'
+import { useAccount } from 'wagmi'
+import { Checkbox, Typography } from '@mui/material'
+import { Stack } from '@mui/system'
+import { getTestnetFromMainnet } from '@vitruvio/utils'
 const Page: NextPage = () => {
-  const { isConnected, address } = useAccount();
-  const { encrypt, decrypt } = useVitruvio();
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [isTestnet, setIsTestnet] = useState(false);
-  const [chain, setChain] = useState<Chain>('ethereum');
-  const [encryptedString, setEncryptedString] = useState<Blob>();
-  const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>();
-  const { Connect } = useUI();
+  const { isConnected, address } = useAccount()
+  const [hasLoaded, setHasLoaded] = useState(false)
+  const [isTestnet, setIsTestnet] = useState(false)
+  const [chain, setChain] = useState<Chain>('ethereum')
+  const { encrypt, decrypt } = useVitruvio(
+    isTestnet ? getTestnetFromMainnet(chain) : chain
+  )
+  const [encryptedString, setEncryptedString] = useState<Blob>()
+  const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>()
+  const { Connect } = useUI()
 
   useEffect(() => {
-    setHasLoaded(true);
-  }, []);
+    setHasLoaded(true)
+  }, [])
 
   return (
     <>
@@ -33,14 +35,14 @@ const Page: NextPage = () => {
         <Typography variant='body1'>Testnet</Typography>
         <Checkbox
           onChange={(e) => {
-            setIsTestnet(e.target.checked);
+            setIsTestnet(e.target.checked)
           }}
         />
       </Stack>
       <Stack direction='row'>
         <SelectChains
           onSelect={(chain) => {
-            setChain(chain);
+            setChain(chain)
           }}
         />
         <Connect
@@ -54,10 +56,12 @@ const Page: NextPage = () => {
           <button
             onClick={async () => {
               const res = await encrypt(
-                'This is a superstring encrypted with lit protocol'
-              );
-              setEncryptedString(res.encryptedString);
-              setEncryptedSymmetricKey(res.encryptedSymmetricKey);
+                'This is a superstring encrypted with lit protocol',
+                '0.0.1',
+                'Secret string'
+              )
+              setEncryptedString(res.encryptedString)
+              setEncryptedSymmetricKey(res.encryptedSymmetricKey)
             }}
           >
             Sign Message
@@ -70,10 +74,10 @@ const Page: NextPage = () => {
                   const decryptedData = await decrypt(
                     encryptedSymmetricKey,
                     encryptedString
-                  );
-                  console.log(decryptedData);
+                  )
+                  console.log(decryptedData)
                 } catch (error) {
-                  console.log(error);
+                  console.log(error)
                 }
               }
             }}
@@ -83,7 +87,7 @@ const Page: NextPage = () => {
         </>
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
