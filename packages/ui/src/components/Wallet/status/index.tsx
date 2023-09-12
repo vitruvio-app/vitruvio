@@ -1,7 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material'
 import { formatWalletAddress, getTestnetFromMainnet } from '@vitruvio/utils'
 import React from 'react'
-import Blockies from 'react-blockies'
 import { Chain } from '@vitruvio/types'
 import { Stack } from '@mui/system'
 import _ from 'lodash'
@@ -21,7 +20,6 @@ const WalletStatus = (props: Props): JSX.Element => {
             {_.capitalize(props.chain)} {props.isTestnet && `(${getTestnetFromMainnet(props.chain)})`}
           </Typography>
         </Stack>
-        {/* <Blockies seed={props.address} /> */}
       </CardContent>
     </Card>
   )

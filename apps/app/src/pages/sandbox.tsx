@@ -2,14 +2,22 @@
 import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { Chain, Testnet } from '@vitruvio/types'
-import { useUI, SelectChains, WalletStatus } from '@vitruvio/ui'
+import { useUI, SelectChains, WalletStatus, Button } from '@vitruvio/ui'
 import { useVitruvio } from '@vitruvio/react'
-import { useAccount } from 'wagmi'
+import { useAccount, useChainId, useConnect } from 'wagmi'
 import { Checkbox, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
-import { getTestnetFromMainnet } from '@vitruvio/utils'
+import { useSwitchNetwork } from 'wagmi'
+import {
+  getTestnetFromMainnet,
+  getChainFromChainId,
+  isTestnetFromChainId,
+  getChainIdFromChain,
+} from '@vitruvio/utils'
+import { useTheme } from '@mui/material'
 const Page: NextPage = () => {
-  const { isConnected, address } = useAccount()
+  const { isConnected, address, connector } = useAccount()
+  const chainId = useChainId()
   const [hasLoaded, setHasLoaded] = useState(false)
   const [isTestnet, setIsTestnet] = useState(false)
   const [chain, setChain] = useState<Chain>('ethereum')
@@ -19,26 +27,40 @@ const Page: NextPage = () => {
   const [encryptedString, setEncryptedString] = useState<Blob>()
   const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>()
   const { Connect } = useUI()
-
+  const theme = useTheme()
   useEffect(() => {
     setHasLoaded(true)
   }, [])
-
+  useEffect(() => {
+    if (hasLoaded) {
+      setIsTestnet(isConnected ? isTestnetFromChainId(chainId) : false)
+      setChain(isConnected ? getChainFromChainId(chainId) : 'ethereum')
+    }
+  }, [isConnected, chainId, hasLoaded])
   return (
     <>
       <Stack direction='row' justifyContent={'space-between'}>
         <Typography variant='h4'>Vitruvio Sandbox</Typography>
-        <WalletStatus chain={chain} isTestnet={isTestnet} address={'0x'} />
+        {isConnected && hasLoaded && (
+          <WalletStatus
+            chain={chain}
+            isTestnet={isTestnet}
+            address={address as string}
+          />
+        )}
       </Stack>
 
-      <Stack direction={'row'} alignItems={'center'}>
-        <Typography variant='body1'>Testnet</Typography>
-        <Checkbox
-          onChange={(e) => {
-            setIsTestnet(e.target.checked)
-          }}
-        />
-      </Stack>
+      {!isConnected && hasLoaded && (
+        <Stack direction={'row'} alignItems={'center'}>
+          <Typography variant='body1'>Testnet</Typography>
+          <Checkbox
+            checked={isTestnet}
+            onChange={(e) => {
+              setIsTestnet(e.target.checked)
+            }}
+          />
+        </Stack>
+      )}
       <Stack direction='row'>
         <SelectChains
           onSelect={(chain) => {
@@ -46,6 +68,7 @@ const Page: NextPage = () => {
           }}
         />
         <Connect
+          color={'white'}
           hideOnConnect={true}
           defaultChain={isTestnet ? getTestnetFromMainnet(chain) : chain}
         />
@@ -53,7 +76,10 @@ const Page: NextPage = () => {
 
       {isConnected && hasLoaded ? (
         <>
-          <button
+          <Button
+            variant='contained'
+            color={'primary'}
+            text='Sign Message'
             onClick={async () => {
               const res = await encrypt(
                 'This is a superstring encrypted with lit protocol',
@@ -63,10 +89,11 @@ const Page: NextPage = () => {
               setEncryptedString(res.encryptedString)
               setEncryptedSymmetricKey(res.encryptedSymmetricKey)
             }}
-          >
-            Sign Message
-          </button>
-          <button
+          />
+          <Button
+            color='secondary'
+            variant='contained'
+            text='Decrypt my message'
             disabled={!encryptedString || !encryptedSymmetricKey}
             onClick={async () => {
               if (encryptedString && encryptedSymmetricKey) {
@@ -81,9 +108,7 @@ const Page: NextPage = () => {
                 }
               }
             }}
-          >
-            Decrypt my message
-          </button>
+          />
         </>
       ) : null}
     </>

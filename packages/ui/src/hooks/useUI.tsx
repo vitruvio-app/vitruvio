@@ -23,6 +23,8 @@ export default function useUI() {
     label?: string
     disabled?: boolean
     defaultChain?: Chain | Testnet
+    variant?: 'contained' | 'outlined'
+    color?: string
   }) => {
     if (!hasMounted) return null
     if (params.hideOnConnect && isConnected) return null
@@ -32,10 +34,11 @@ export default function useUI() {
     }
     return (
       <Button
-        icon={<WalletConnectIcon color='#3396FF' />}
+        icon={<WalletConnectIcon color={params.color || '#3396FF'} />}
         loading={isOpen}
+        variant={params.variant || 'contained'}
         loadingText={'Connecting...'}
-        loadingIcon={<Spinner width='16px' height='16px' borderWidth='1px' color='#3396FF' />}
+        loadingIcon={<Spinner width='16px' height='16px' borderWidth='1px' color={params.color || '#3396FF'} />}
         onClick={() => {
           if (isConnected) {
             disconnect()

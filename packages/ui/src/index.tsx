@@ -8,6 +8,7 @@ import PolygonIcon from './assets/polygon'
 import Spinner from './components/Loaders/spinner'
 import SelectChains from './components/Select/Chains'
 import WalletStatus from './components/Wallet/status'
+import BaseLayout from './components/Layout/BaseLayout'
 export {
   SelectChains,
   Button,
@@ -19,4 +20,5 @@ export {
   PolygonIcon,
   Spinner,
   WalletStatus,
+  BaseLayout,
 }

@@ -4,10 +4,10 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 const chains = [arbitrum, mainnet, polygon]
 const projectId = process.env.WALLETCONNECT_PROJECTID as string
-
 // Client-side cache, shared for the whole session of the user in the browser.
 import { AppProps } from 'next/app'
 import { VitruvioReact } from '@vitruvio/react'
+import ThemeProviderWrapper from '@/theme/ThemeProvider'
 const { provider } = configureChains(chains, [w3mProvider({ projectId })])
 const wagmiClient = createClient({
   autoConnect: true,
@@ -31,7 +31,9 @@ export default function App({ Component, pageProps }: AppProps) {
             apiEndpoint: API_ENDPOINT,
           }}
         >
-          <Component {...pageProps} />
+          <ThemeProviderWrapper>
+            <Component {...pageProps} />
+          </ThemeProviderWrapper>
         </VitruvioReact>
       </WagmiConfig>
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
