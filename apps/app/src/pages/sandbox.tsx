@@ -4,15 +4,13 @@ import type { NextPage } from 'next'
 import { Chain, Testnet } from '@vitruvio/types'
 import { useUI, SelectChains, WalletStatus, Button } from '@vitruvio/ui'
 import { useVitruvio } from '@vitruvio/react'
-import { useAccount, useChainId, useConnect } from 'wagmi'
+import { useAccount, useChainId } from 'wagmi'
 import { Checkbox, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
-import { useSwitchNetwork } from 'wagmi'
 import {
   getTestnetFromMainnet,
   getChainFromChainId,
   isTestnetFromChainId,
-  getChainIdFromChain,
 } from '@vitruvio/utils'
 import { useTheme } from '@mui/material'
 const Page: NextPage = () => {

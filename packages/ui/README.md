@@ -1,67 +1,27 @@
-# Vitruvio UI
+# React + TypeScript + Vite
 
-A collection of reusable UI components built with React, styled-components, Material-UI, and TypeScript. The package also includes animated components using Lottie Web and previewed in Storybook.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Installation
+Currently, two official plugins are available:
 
-To install the package, run:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-```bash
-yarn add @vitruvio/ui
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
 ```
 
-## Usage
-
-### Importing Components
-
-To use a component, simply import it from the package and render it in your React application. Here's an example of how to use a Button component:
-
-```tsx
-import React from 'react'
-import { Button } from '@vitruvio/ui'
-
-const MyComponent = () => {
-  return (
-    <Button variant='contained' color='primary'>
-      Click me!
-    </Button>
-  )
-}
-```
-
-### Styling Components
-
-```tsx
-import React from 'react'
-import styled from 'styled-components'
-import { Button } from '@vitruvio/ui'
-
-const MyStyledButton = styled(Button)`
-  background-color: #ff0000;
-  color: #ffffff;
-`
-
-const MyComponent = () => {
-  return <MyStyledButton>Click me!</MyStyledButton>
-}
-```
-
-### Animating Components
-
-The package includes animated components using Lottie Web, which provides high-quality animations that can be easily integrated into your React application. To use an animated component, simply import it from the package and render it in your application.
-
-### Previewing Components
-
-The package includes a Storybook instance that can be used to preview the components. To run the Storybook instance, run:
-
-```bash
-yarn storybook
-```
-
-### Contributing
-
-Contributions are welcome! To contribute to the package, please fork the repository and submit a pull request.
-
-### License
-
-[MIT](./LICENSE)
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

@@ -20,7 +20,7 @@
     "@types/node": "^18.15.11",
     "@vitruvio/types": "*",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.2"
   },
   "peerDependencies": {
     "wagmi": "^0.12.8",
