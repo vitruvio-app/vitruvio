@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IPFS_INFURA_URL } from '../../../@types'
+import { IPFS_INFURA_URL } from '../GLOBALS'
 const addToIpfs = async (
   data: Blob,
   provider: {
@@ -17,7 +17,10 @@ const addToIpfs = async (
   }>(`${IPFS_INFURA_URL}/add`, form, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `${provider.apiKey}:${provider.apiSecret}`,
+      Authorization: `Basic ${Buffer.from(
+        `${provider.apiKey}:${provider.apiSecret}`,
+        'utf8'
+      ).toString('base64')}`,
     },
   })
   return {

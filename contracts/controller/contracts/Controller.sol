@@ -11,7 +11,6 @@ struct File {
 }
 
 contract Controller {
-    address VITRUVIO_TREASURE;
     mapping(address => mapping(string => File[])) userFiles;
 
     uint256 private percentage = 100; // 1% in basis points
@@ -36,7 +35,7 @@ contract Controller {
             cid
         );
         //Intercept request to fund Vitruvio's treasure with 0.001 ether
-        payable(VITRUVIO_TREASURE).transfer(0.001 ether);
+        // payable(VITRUVIO_TREASURE).transfer(0.001 ether);
 
         //Add it to the user's map
         userFiles[msg.sender][archiveName].push(newFile);
@@ -46,25 +45,28 @@ contract Controller {
 
     //* Gets all versions of an uploaded archive by a user *//
     function getFiles(
+        address user,
         string memory archiveName
     ) public view returns (File[] memory) {
-        return userFiles[msg.sender][archiveName];
+        return userFiles[user][archiveName];
     }
 
     //* Get the latest version of an uploaded archive*//
     function getLatestFile(
+        address user,
         string memory archiveName
     ) public view returns (File memory) {
-        File[] memory files = userFiles[msg.sender][archiveName];
+        File[] memory files = userFiles[user][archiveName];
         return files[files.length - 1];
     }
 
     //* Gets a file with a given version*//
     function getFileByVersion(
+        address user,
         string memory archiveName,
         string memory version
     ) public view returns (File memory) {
-        File[] memory files = userFiles[msg.sender][archiveName];
+        File[] memory files = userFiles[user][archiveName];
         File memory foundFile;
         for (uint256 i = 0; i < files.length; i++) {
             if (
@@ -84,9 +86,10 @@ contract Controller {
 
     //* Gets all available versions of an uploaded archive by a user *//
     function getAllAvailablesVersionByFile(
+        address user,
         string memory archiveName
     ) public view returns (string[] memory) {
-        File[] memory files = userFiles[msg.sender][archiveName];
+        File[] memory files = userFiles[user][archiveName];
         string[] memory versions = new string[](files.length);
         for (uint256 i = 0; i < files.length; i++) {
             versions[i] = files[i].version;

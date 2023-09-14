@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 import { Chain, Testnet } from '@vitruvio/types'
 import { useUI, SelectChains, WalletStatus, Button } from '@vitruvio/ui'
 import { useVitruvio } from '@vitruvio/react'
-import { useAccount, useChainId } from 'wagmi'
+import { useAccount, useChainId, useNetwork } from 'wagmi'
 import { Checkbox, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import {
@@ -14,27 +14,32 @@ import {
 } from '@vitruvio/utils'
 import { useTheme } from '@mui/material'
 const Page: NextPage = () => {
-  const { isConnected, address, connector } = useAccount()
-  const chainId = useChainId()
+  const { isConnected, address } = useAccount()
+  const { chain: networkChain } = useNetwork()
   const [hasLoaded, setHasLoaded] = useState(false)
   const [isTestnet, setIsTestnet] = useState(false)
   const [chain, setChain] = useState<Chain>('ethereum')
-  const { encrypt, decrypt } = useVitruvio(
+  const { encrypt, decrypt, commit } = useVitruvio(
     isTestnet ? getTestnetFromMainnet(chain) : chain
   )
   const [encryptedString, setEncryptedString] = useState<Blob>()
   const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>()
   const { Connect } = useUI()
-  const theme = useTheme()
   useEffect(() => {
     setHasLoaded(true)
   }, [])
   useEffect(() => {
     if (hasLoaded) {
-      setIsTestnet(isConnected ? isTestnetFromChainId(chainId) : false)
-      setChain(isConnected ? getChainFromChainId(chainId) : 'ethereum')
+      setIsTestnet(
+        isConnected ? isTestnetFromChainId(networkChain?.id as number) : false
+      )
+      setChain(
+        isConnected
+          ? getChainFromChainId(networkChain?.id as number)
+          : 'ethereum'
+      )
     }
-  }, [isConnected, chainId, hasLoaded])
+  }, [isConnected, networkChain?.id, hasLoaded])
   return (
     <>
       <Stack direction='row' justifyContent={'space-between'}>
@@ -60,11 +65,13 @@ const Page: NextPage = () => {
         </Stack>
       )}
       <Stack direction='row'>
-        <SelectChains
-          onSelect={(chain) => {
-            setChain(chain)
-          }}
-        />
+        {!isConnected && hasLoaded && (
+          <SelectChains
+            onSelect={(chain) => {
+              setChain(chain)
+            }}
+          />
+        )}
         <Connect
           color={'white'}
           hideOnConnect={true}
@@ -82,29 +89,21 @@ const Page: NextPage = () => {
               const res = await encrypt(
                 'This is a superstring encrypted with lit protocol',
                 '0.0.1',
-                'Secret string'
+                'Secret string',
+                {
+                  useIPFS: true,
+                }
               )
               setEncryptedString(res.encryptedString)
               setEncryptedSymmetricKey(res.encryptedSymmetricKey)
             }}
           />
           <Button
-            color='secondary'
             variant='contained'
-            text='Decrypt my message'
-            disabled={!encryptedString || !encryptedSymmetricKey}
+            text='Save changes'
             onClick={async () => {
-              if (encryptedString && encryptedSymmetricKey) {
-                try {
-                  const decryptedData = await decrypt(
-                    encryptedSymmetricKey,
-                    encryptedString
-                  )
-                  console.log(decryptedData)
-                } catch (error) {
-                  console.log(error)
-                }
-              }
+              const tx = await commit.execute()
+              console.log(tx)
             }}
           />
         </>

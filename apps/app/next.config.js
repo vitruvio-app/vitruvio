@@ -4,8 +4,8 @@ const nextConfig = {
   reactStrictMode: false,
   env: {
     WALLETCONNECT_PROJECTID: process.env.WALLETCONNECT_PROJECTID,
-    INFURA_PROJECTID: process.env.INFURA_PROJECTID,
-    INFURA_PROJECTSECRET: process.env.INFURA_PROJECTSECRET,
+    INFURA_API_SECRET: process.env.INFURA_API_SECRET,
+    INFURA_API_KEY: process.env.INFURA_API_KEY,
   },
 }
 

@@ -8,7 +8,7 @@ All testing is done using [Sepolia Testnet 🔗](https://sepolia.etherscan.io/)
 
 ### Last stable testnet contract for Sepolia ⚙️
 
-- [Contract Controller 🔄](https://sepolia.etherscan.io/address/0x53D320F47fbef9fce509f593DD646C5050Fac2c6): 0x53D320F47fbef9fce509f593DD646C5050Fac2c6
+- [Contract Controller 🔄](https://sepolia.etherscan.io/address/0xC74D98443Dd9a45bAD9AeaD30B5688E3a99E015D): 0xC74D98443Dd9a45bAD9AeaD30B5688E3a99E015D
 
 ### How to use 🤔
 

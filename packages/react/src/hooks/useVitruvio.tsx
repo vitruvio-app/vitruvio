@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unsafe-optional-chaining */
 import { useContext, useState } from 'react'
 import { APPContext } from '../contexts/app/context'
@@ -36,8 +37,8 @@ export default function useVitruvio(chain: Chain | Testnet) {
       encryptionResult?.timestamp,
     ],
   })
-  const { data, isLoading, isSuccess, writeAsync } = useContractWrite(config)
-  const { signAuthMessage, isSigning } = useWallet()
+  const { writeAsync } = useContractWrite(config)
+  const { signAuthMessage } = useWallet()
 
   /**
    * The `encrypt` function encrypts a message using a symmetric key and saves the encrypted message and
@@ -65,9 +66,8 @@ export default function useVitruvio(chain: Chain | Testnet) {
   ) => {
     const accessControlConditions: AccessControlConditions = [
       {
-        contractAddress: '',
-        standardContractType: '',
-        chain: 'ethereum',
+        contractAddress: '0xF274800E82717D38d2e2ffe18A4C6489a50C5Add',
+        chain: chain,
         method: 'eth_getBalance',
         parameters: [':userAddress', 'latest'],
         returnValueTest: {
@@ -85,7 +85,7 @@ export default function useVitruvio(chain: Chain | Testnet) {
       chain: chain,
     })
     if (config && config.useIPFS) {
-      // Save the encrypted string to IPFS, asuming that the user sent Infura credentials
+      //Save the encrypted string to IPFS, asuming that the user sent Infura credentials
       const { CID } = await addToIpfs(encryptedString, {
         type: ipfsProvider.type,
         apiKey: ipfsProvider.apiKey,
@@ -100,6 +100,14 @@ export default function useVitruvio(chain: Chain | Testnet) {
         archiveName,
         timestamp: Date.now(),
       })
+      console.log([
+        CID,
+        LitSdk.uint8arrayToString(encryptedSymmetricKey, 'base16') as string,
+        JSON.stringify(accessControlConditions),
+        version,
+        archiveName,
+        Date.now(),
+      ])
       return {
         CID,
         encryptedString,

@@ -19,21 +19,21 @@ const VitruvioReact = (props: VitruvioReactProps): JSX.Element => {
     alertWhenUnauthorized: false,
     debug: false,
   })
-
   useEffect(() => {
     ;(async () => {
       await litProtocol.connect()
     })()
   }, [])
-
+  if (!props.ipfsProvider.apiKey) throw new Error('IPFS API key is required')
+  if (!props.ipfsProvider.apiKeySecret) throw new Error('IPFS API key secret is required')
   return (
     <APPContext.Provider
       value={{
         litProtocolInstance: litProtocol,
         ipfsProvider: {
           type: props.ipfsProvider.type,
-          apiKey: props.ipfsProvider.apiKey,
-          apiSecret: props.ipfsProvider.apiKeySecret,
+          apiKey: props.ipfsProvider.apiKey || (process.env.INFURA_API_KEY as string),
+          apiSecret: props.ipfsProvider.apiKeySecret || (process.env.INFURA_API_KEY as string),
           host: props.ipfsProvider.apiEndpoint,
         },
       }}

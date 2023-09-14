@@ -77,7 +77,7 @@ const getMainnetFromTestnet = (chain: Testnet): Chain => {
 const getChainIdFromChain = (chain: Chain | Testnet): number => {
   switch (chain) {
     case 'sepolia':
-      return 42161
+      return 11155111
     case 'ethereum':
       return 1
     case 'mumbai':
@@ -122,7 +122,7 @@ const getChainFromChainId = (chainId: number): Chain => {
       return 'ethereum'
     case 137:
       return 'polygon'
-    case 421614:
+    case 11155111:
       return 'ethereum'
     case 80001:
       return 'polygon'
@@ -142,7 +142,7 @@ const isTestnetFromChainId = (chainId: number): boolean => {
       return false
     case 137:
       return false
-    case 42161:
+    case 11155111:
       return true
     case 80001:
       return true
