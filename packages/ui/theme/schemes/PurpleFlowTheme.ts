@@ -1072,7 +1072,6 @@ export const PurpleFlowTheme = createTheme({
         root: {
           paddingTop: 20,
           paddingBottom: 20,
-          background: colors.alpha.black[5],
         },
       },
     },

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
-import { Chain, Testnet } from '@vitruvio/types'
+import { Chain } from '@vitruvio/types'
 import { useUI, SelectChains, WalletStatus, Button } from '@vitruvio/ui'
 import { useVitruvio } from '@vitruvio/react'
-import { useAccount, useChainId, useNetwork } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 import { Checkbox, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import {
@@ -12,7 +12,6 @@ import {
   getChainFromChainId,
   isTestnetFromChainId,
 } from '@vitruvio/utils'
-import { useTheme } from '@mui/material'
 const Page: NextPage = () => {
   const { isConnected, address } = useAccount()
   const { chain: networkChain } = useNetwork()
