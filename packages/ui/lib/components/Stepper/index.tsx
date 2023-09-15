@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import Check from '@mui/icons-material/Check'
-interface IStep {
+export type IStep = {
   label: string
   icon?: JSX.Element
   id: number

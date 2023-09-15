@@ -9,7 +9,9 @@ import Spinner from './components/Loaders/spinner'
 import SelectChains from './components/Select/Chains'
 import WalletStatus from './components/Wallet/status'
 import BaseLayout from './components/Layout/BaseLayout'
+import Stepper, { IStep as Step } from './components/Stepper'
 
+export type IStep = Step
 export {
   SelectChains,
   Button,
@@ -22,4 +24,5 @@ export {
   Spinner,
   WalletStatus,
   BaseLayout,
+  Stepper,
 }

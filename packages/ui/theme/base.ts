@@ -11,6 +11,7 @@ import { PurpleFlowTheme } from './schemes/PurpleFlowTheme'
 export function themeCreator(theme: string): Theme {
   return themeMap[theme]
 }
+import '@fontsource/inter'
 
 declare module '@mui/material/styles' {
   interface Theme {

@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { Chain } from '@vitruvio/types'
-import { useUI, SelectChains, WalletStatus, Button } from '@vitruvio/ui'
+import { useUI, SelectChains, WalletStatus, Stepper, IStep } from '@vitruvio/ui'
 import { useVitruvio } from '@vitruvio/react'
 import { useAccount, useNetwork } from 'wagmi'
 import { Checkbox, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
+
 import {
   getTestnetFromMainnet,
   getChainFromChainId,
@@ -23,6 +24,7 @@ const Page: NextPage = () => {
   )
   const [encryptedString, setEncryptedString] = useState<Blob>()
   const [encryptedSymmetricKey, setEncryptedSymmetricKey] = useState<string>()
+  const [activeStep, setActiveStep] = useState(0)
   const { Connect } = useUI()
   useEffect(() => {
     setHasLoaded(true)
@@ -39,10 +41,15 @@ const Page: NextPage = () => {
       )
     }
   }, [isConnected, networkChain?.id, hasLoaded])
+
   return (
     <>
-      <Stack direction='row' justifyContent={'space-between'}>
-        <Typography variant='h4'>Vitruvio Sandbox</Typography>
+      <Stack
+        direction='row'
+        justifyContent={'space-between'}
+        alignItems={'center'}
+      >
+        <Typography variant='h2'>Vitruvio Sandbox</Typography>
         {isConnected && hasLoaded && (
           <WalletStatus
             chain={chain}
@@ -80,7 +87,7 @@ const Page: NextPage = () => {
 
       {isConnected && hasLoaded ? (
         <>
-          <Button
+          {/* <Button
             variant='contained'
             color={'primary'}
             text='Sign Message'
@@ -104,7 +111,7 @@ const Page: NextPage = () => {
               const tx = await commit.execute()
               console.log(tx)
             }}
-          />
+          /> */}
         </>
       ) : null}
     </>
